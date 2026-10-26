@@ -1,9 +1,9 @@
 /**
  * BracketStack.java
  *
- * Your Name:        __________________
- * Your Student ID:  __________________
- * Your Date:        __________________
+ * Your Name:        Ekin Karıncalı
+ * Your Student ID:  230446019
+ * Your Date:        26.10.2026
  */
 
 public class BracketStack {
@@ -28,13 +28,21 @@ public class BracketStack {
     public void push(char value) {
         // connect newNode to the current top
         // update top
-        
+        Node newNode = new Node(value);
+        newNode.next = top;
+        top = newNode;
     }
 
     //  TODO 2: Remove and return the top element
     public char pop() {
+
+        if(isEmpty()){
+            throw new RuntimeException("Stack is empty");
+        }
         
-        return '';
+        char x = top.data;
+        top = top.next;
+        return x;
         // After saving top.data, the new top should be the node that comes after the current top.  
     }
 
@@ -42,13 +50,15 @@ public class BracketStack {
     public char peek() {
         // Control if the stack is empty; if it is, then return null
         // if not return the data of the top
-        return '';
+        if(isEmpty()){
+            throw new RuntimeException("Stack is empty");
+        }
+        return top.data;
     }
 
     //  TODO 4: Check whether the stack is empty
     public boolean isEmpty() {
-        // TODO
-        return false;
+        return top == null;
     }
 }
 
